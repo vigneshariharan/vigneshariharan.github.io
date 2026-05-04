@@ -3,116 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Portfolio</title>
+    <title>Vignesh Hariharan K | Product Portfolio</title>
+    <!-- Modern Serif and Sans-Serif Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --bg: #f4f7f6;
+            --bg-color: #f9f8f3; /* Subtle beige background */
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent-green: #4f772d;
+            --tag-bg: #f0f0f0;
+            --grid-line: rgba(0, 0, 0, 0.03);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+            background-size: 20px 20px; /* Subtle grid pattern from inspiration */
+            color: var(--text-main);
             margin: 0;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
+            padding: 40px 20px;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
         }
 
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            transition: transform 0.2s;
+        header {
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* Case Study Card Layout */
+        .case-study-card {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            min-height: 500px;
+        }
+
+        @media (max-width: 850px) {
+            .case-study-card { grid-template-columns: 1fr; }
+        }
+
+        /* Left Side: Content */
+        .content-area {
+            padding: 60px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .category-tags {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .card h3 {
-            margin-top: 0;
-            font-size: 1.2rem;
+        .case-study-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
         }
 
-        .pdf-preview {
-            width: 100%;
-            height: 200px;
-            border: 1px solid #ddd;
-            margin-bottom: 15px;
+        .description {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 10px 20px;
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .pill {
+            background: var(--tag-bg);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .cta-link {
+            color: var(--accent-green);
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
         }
 
-        .btn:hover {
-            background: #2980b9;
+        .cta-link:hover { gap: 15px; }
+
+        /* Right Side: PDF Preview */
+        .preview-area {
+            background: #f0f4f8; /* Contrast color for the preview well */
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            background: white;
+        }
+
+        /* Nav Indicators */
+        .nav-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            background: #555;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Project Portfolio</h1>
-    <p>A collection of my research and documentation</p>
-</header>
-
 <div class="container">
-    <!-- Project Card 1 -->
-    <div class="card">
-        <h3>Project Analysis Report</h3>
-        <!-- Embedding the PDF directly -->
-        <iframe src="YOUR_RAW_GITHUB_URL_HERE" class="pdf-preview"></iframe>
-        <p>A brief description of what this PDF contains.</p>
-        <a href="YOUR_RAW_GITHUB_URL_HERE" target="_blank" class="btn">View Full PDF</a>
-    </div>
+    <header>
+        <h1>Case Studies</h1>
+        <p>A curated set of work showcasing complex problem solving, AI-driven roadmaps, and business impact across Fintech and beyond.</p>
+    </header>
 
-    <!-- Project Card 2 -->
-    <div class="card">
-        <h3>Technical Specifications</h3>
-        <iframe src="YOUR_SECOND_RAW_URL_HERE" class="pdf-preview"></iframe>
-        <p>Detailed architectural breakdown of the system.</p>
-        <a href="YOUR_SECOND_RAW_URL_HERE" target="_blank" class="btn">View Full PDF</a>
-    </div>
-  
-    <!-- Project Card 3 -->
-    <div class="card">
-        <h3>Technical Specifications</h3>
-        <iframe src="YOUR_SECOND_RAW_URL_HERE" class="pdf-preview"></iframe>
-        <p>Detailed architectural breakdown of the system.</p>
-        <a href="YOUR_SECOND_RAW_URL_HERE" target="_blank" class="btn">View Full PDF</a>
-    </div>
-  
-    <!-- Project Card 4 -->
-    <div class="card">
-        <h3>Technical Specifications</h3>
-        <iframe src="YOUR_SECOND_RAW_URL_HERE" class="pdf-preview"></iframe>
-        <p>Detailed architectural breakdown of the system.</p>
-        <a href="YOUR_SECOND_RAW_URL_HERE" target="_blank" class="btn">View Full PDF</a>
+    <!-- Case Study 1: GenAI Roadmap -->
+    <section class="case-study-card">
+        <div class="content-area">
+            <div class="category-tags">E-Commerce • AI • Roadmap</div>
+            <h2>Flipkart GenAI Roadmap for Sellers</h2>
+            <p class="description">
+                National first-prize winning strategy for scaling seller operations through generative AI integration. Focused on reducing friction in onboarding and cataloging.
+            </p>
+            <div class="pills">
+                <span class="pill">Generative AI</span>
+                <span class="pill">Strategy</span>
+                <span class="pill">UX Roadmap</span>
+            </div>
+            <a href="YOUR_RAW_GITHUB_PDF_LINK_1" target="_blank" class="cta-link">View Case Study &rarr;</a>
+        </div>
+        <div class="preview-area">
+            <!-- Embed PDF Preview -->
+            <iframe src="YOUR_RAW_GITHUB_PDF_LINK_1" class="pdf-frame"></iframe>
+        </div>
+    </section>
+
+    <!-- Case Study 2: Fintech MVP -->
+    <section class="case-study-card">
+        <div class="content-area">
+            <div class="category-tags">Fintech • Open Banking • Regulation</div>
+            <h2>0-1 Consent Management Platform</h2>
+            <p class="description">
+                Leading the MVP launch for CFPB 1033 compliance, enabling secure data sharing and consumer consent management for a major financial institution.
+            </p>
+            <div class="pills">
+                <span class="pill">MVP Launch</span>
+                <span class="pill">CFPB 1033</span>
+                <span class="pill">Product Management</span>
+            </div>
+            <a href="YOUR_RAW_GITHUB_PDF_LINK_2" target="_blank" class="cta-link">View Case Study &rarr;</a>
+        </div>
+        <div class="preview-area">
+            <iframe src="YOUR_RAW_GITHUB_PDF_LINK_2" class="pdf-frame"></iframe>
+        </div>
+    </section>
+
+    <!-- Case Study 3: Polartern -->
+    <section class="case-study-card">
+        <div class="content-area">
+            <div class="category-tags">Startup • Experiential Tourism • Marketplace</div>
+            <h2>Polartern: Borrow a Lifestyle</h2>
+            <p class="description">
+                Building an authentic local lifestyle marketplace. This study covers the pivot to the current business model and local supply-side strategy.
+            </p>
+            <div class="pills">
+                <span class="pill">0-to-1</span>
+                <span class="pill">Marketplace</span>
+                <span class="pill">User Research</span>
+            </div>
+            <a href="YOUR_RAW_GITHUB_PDF_LINK_3" target="_blank" class="cta-link">View Case Study &rarr;</a>
+        </div>
+        <div class="preview-area">
+            <iframe src="YOUR_RAW_GITHUB_PDF_LINK_3" class="pdf-frame"></iframe>
+        </div>
+    </section>
+
+    <!-- Visual Pagination like image_559f0e.jpg -->
+    <div class="nav-controls">
+        <span style="color: var(--text-muted);">1 of 3</span>
+        <a href="#" class="nav-btn">&larr;</a>
+        <a href="#" class="nav-btn">&rarr;</a>
     </div>
 </div>
 
